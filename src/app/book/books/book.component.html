@@ -1,0 +1,115 @@
+<mat-card>
+  <mat-card-content>
+
+    <mat-tab-group>
+      <mat-tab label="My books">
+        <div class="col-md-12  col-12 flex-grow-1 d-flex flex-column ">
+          <div class="page-header">
+            <h2 class="title-1">My Books</h2>
+            <div class="d-flex align-items-md-center flex-column flex-md-row">
+              <button
+                style="margin-top:2rem; margin-bottom:2rem; margin-left:2.4rem;"
+                routerLink="add"
+                mat-raised-button
+                class="btn btn--primary">
+                + Add Book
+              </button>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="row">
+              <div class="table-responsive">
+                <block-ui>
+                  <table class="table  table-striped table-earning">
+                    <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Price</th>
+                      <th>OnSale</th>
+                      <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let book of bookList">
+                      <td>{{book.bookName}}</td>
+                      <td>{{book.price | currency}}</td>
+                      <td>{{book.onSale ? 'yes' : 'no'}}</td>
+                      <td>
+                        <button mat-icon-button *ngIf="!isGuid(book.subscriptionId)"
+                                (click)="operation(book.onSale ? 'removeFromSale' : 'resale',book)"
+                                matTooltip="{{book.onSale ? 'Remove from sale' : 'Resale'}}">
+                          <mat-icon>{{book.onSale ? 'remove_shopping_cart' : 'autorenew'}}</mat-icon>
+                        </button>
+
+                        <button mat-icon-button matTooltip="Unsubscribe"
+                                (click)="unSubscribe(book.id)"
+                                *ngIf="isGuid(book.subscriptionId)">
+                          <mat-icon>unsubscribe</mat-icon>
+                        </button>
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </block-ui>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-tab>
+
+      <mat-tab label="All Books">
+        <div class="col-md-12  col-12 flex-grow-1 d-flex flex-column ">
+          <div class="page-header">
+            <h2 class="title-1"
+                style="margin-top:2rem;
+                 margin-bottom:2rem;
+                  margin-left:2.4rem;">Available books</h2>
+          </div>
+          <div class="col-md-12">
+            <div class="row">
+              <div class="table-responsive">
+                <block-ui>
+                  <table class="table  table-striped table-earning">
+                    <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Price</th>
+                      <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let book of otherBooks ">
+                      <td>{{book.bookName}}</td>
+                      <td>{{book.price | currency}}</td>
+                      <td>
+
+                        <ng-container *ngIf="hasSubscription; else noSubscription">
+                          <ng-container *ngIf="book.id | checkOwner | async; else canBeSubscribed">
+                            <i>Your book</i>
+                          </ng-container>
+                          <ng-template #canBeSubscribed>
+                            <button mat-icon-button matTooltip="Subscribe"
+                                    *ngIf="!isAlreadySubscribed(book)"
+                                    (click)="subscribe(book.id)">
+                              <mat-icon>card_membership</mat-icon>
+                            </button>
+                            <span *ngIf="isAlreadySubscribed(book)"><i><u>Subscribed</u></i></span>
+                          </ng-template>
+                        </ng-container>
+
+                        <ng-template #noSubscription>
+                          No subscription available
+                        </ng-template>
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </block-ui>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-card-content>
+</mat-card>

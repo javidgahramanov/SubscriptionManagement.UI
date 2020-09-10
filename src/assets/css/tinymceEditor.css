@@ -1,0 +1,9 @@
+
+.variable {
+  padding: 10px 10px 5px 10px;
+  background-color: #E5EBCD;
+  border: 1px dotted #CCCCCC;
+  border-radius: 20px;
+  margin-left: 5px;
+  width: auto;
+}

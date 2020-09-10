@@ -1,0 +1,27 @@
+.login-wrap {
+  max-width: 540px;
+  padding-top: 8vh;
+  margin: 0 auto;
+}
+
+.login-form .form-group label {
+  display: block;
+}
+
+.login-content {
+  background: #fff;
+  padding: 30px 30px 20px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+
+.register-link {
+  padding-top: 15px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.register-link > p > a {
+  color: #ff2e44;
+}

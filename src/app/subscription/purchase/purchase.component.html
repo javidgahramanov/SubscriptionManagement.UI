@@ -1,0 +1,18 @@
+<ng-container *ngIf="purchasingSuccessful; else unsuccessful">
+  <div class="alert alert-success" role="alert">
+    <h4 class="alert-heading">Well done!</h4>
+    <p>You have successfully purchased a subscription.</p>
+    <hr>
+    <p class="mb-0">Now,you can go ahead and subscribe to any books available in the catalog! Enjoy your
+      subscription.</p>
+  </div>
+</ng-container>
+
+<ng-template #unsuccessful>
+  <div class="alert alert-danger" role="alert">
+    <h4 class="alert-heading">Ups!</h4>
+    <p>Seems like you already have a subscription</p>
+    <hr>
+    <p class="mb-0">if you want to change current subscription plan,please contact your administrator.</p>
+  </div>
+</ng-template>

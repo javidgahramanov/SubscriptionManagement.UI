@@ -1,0 +1,43 @@
+.sub_plan_container {
+  padding-top: 57px;
+}
+
+.sub_plan {
+  border: 1px solid #e5e5e5;
+  background: #fff;
+  padding: 20px 30px;
+  position: relative;
+  min-height: 180px;
+  overflow: hidden;
+  margin-bottom: 40px;
+  background: #34363F;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .sub_plan {
+    padding: 20px 10px;
+  }
+}
+
+.sub_plan h2 {
+  font-size: 36px;
+  font-weight: 300;
+  color: #f8f8f8;
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .sub_plan h2 {
+    font-size: 22px;
+  }
+}
+
+.purchase {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  align-content: center;
+}

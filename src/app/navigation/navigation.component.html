@@ -1,0 +1,5 @@
+<li *ngFor="let item of items">
+  <a [routerLink]="item.route">
+    <mat-icon class="material-icons-outlined nav-icon">{{item.icon}}</mat-icon>
+    {{item.label}}</a>
+</li>
