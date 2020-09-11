@@ -1,6 +1,9 @@
 # SubscriptionManagementUI
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.0.
+
+## Install Dependencies
+Project dependencies need to be installed by  CLI with " npm install " command.
+
 
 ## Development server
 
